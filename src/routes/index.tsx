@@ -36,7 +36,7 @@ function Store() {
   const [cart, setCart] = useState<Record<string, number>>({});
   const [open, setOpen] = useState(false);
   const items = products.filter((p) => cart[p.id]);
-  const total = items.reduce((s, p) => s + p.price * cart[p.id], 0);
+  const total = items.reduce((s, p) => s + p.price * (cart[p.id] ?? 0), 0);
 
   return (
     <AppShell>
@@ -60,7 +60,7 @@ function Store() {
             {items.map((p) => (
               <li key={p.id} className="flex justify-between gap-2">
                 <span>{p.name} × {cart[p.id]}</span>
-                <span dir="ltr">{p.price * cart[p.id]} BDX</span>
+                <span dir="ltr">{p.price * (cart[p.id] ?? 0)} BDX</span>
               </li>
             ))}
           </ul>
