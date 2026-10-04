@@ -6,6 +6,7 @@ export interface PaymentRecord {
   amount: number;
   status: PaymentStatus;
   time: number;
+  address: string;
 }
 
 const KEY = "belpay.payments";
@@ -36,4 +37,9 @@ export function usePayments() {
     read,
     () => EMPTY,
   );
+}
+
+/** Short display form of a public address, e.g. bxAb12…9xYz */
+export function shortAddress(a: string | undefined) {
+  return a ? `${a.slice(0, 6)}…${a.slice(-4)}` : "—";
 }
