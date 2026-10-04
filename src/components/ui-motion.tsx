@@ -4,7 +4,7 @@ import { motion, type HTMLMotionProps } from "motion/react";
 export function GlassCard({ className = "", hover = false, ...props }: HTMLMotionProps<"div"> & { hover?: boolean }) {
   return (
     <motion.div
-      whileHover={hover ? { y: -2 } : undefined}
+      whileHover={hover ? { y: -2 } : {}}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
       className={`glass rounded-2xl ${className}`}
       {...props}
